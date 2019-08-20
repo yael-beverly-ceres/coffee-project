@@ -3,11 +3,11 @@
 console.log("coffee app loaded");
 
 function renderCoffee(coffee) {
-    var html = '<tr class="coffee">';
-    html += '<td>' + coffee.id + '</td>';
-    html += '<td>' + coffee.name + '</td>';
-    html += '<td>' + coffee.roast + '</td>';
-    html += '</tr>';
+    var html = '<div class="coffee-container">';
+    html += '<p id="table-id">' + coffee.id + '</p>';
+    html += '<h2 id="table-coffee-name">' + coffee.name + '</h2>';
+    html += '<p id="table-coffee-roast" >' + coffee.roast + '</p>';
+    html += '</div>';
 
     return html;
 }
@@ -50,10 +50,52 @@ var coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
-var tbody = document.querySelector('#coffees');
+var coffeeListDiv = document.getElementById("coffeeListDiv");
 var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
 
-tbody.innerHTML = renderCoffees(coffees);
+coffeeListDiv.innerHTML = renderCoffees(coffees); 
 
-submitButton.addEventListener('click', updateCoffees);
+// submitButton.addEventListener('click', updateCoffees);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Functions for searching roasts
+//  returns selected roasts
+function selectRoast(ro) {
+    let tempArr = []
+    
+    coffees.forEach(function(e, i) {
+        if (e.roast === ro) {
+            tempArr.push(coffees[i]);
+        }
+    })
+
+    return tempArr;
+}
+
+//   sort 
+function changeByRoast(ro) {
+    var temp = selectRoast(ro);
+    coffeeListDiv.innerHTML = renderCoffees(temp)
+}
+
+var roastSelection = document.getElementById("roast-selection");
+
+roastSelection.addEventListener('change', function() {
+    var temp = document.getElementById("roast-selection").value;
+    changeByRoast(temp);
+});
