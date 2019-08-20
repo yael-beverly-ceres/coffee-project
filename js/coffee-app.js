@@ -132,3 +132,31 @@ roastNameField.addEventListener("keyup", function() {
     var temp = roastNameField.value;
     changeByName(temp);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// add
+
+var addDropdown = document.getElementById("add-selection");
+var addName = document.getElementById("add-name");
+var addSubmit = document.getElementById("add-submit");
+
+function addCoffee (dd, na) {
+    coffees.push({id: (coffees.length + 1), name: addName.value, roast: addDropdown.value});
+    coffeeListDiv.innerHTML = renderCoffees(coffees);
+}
+
+addSubmit.addEventListener("click", function(e){
+    e.preventDefault();
+});
