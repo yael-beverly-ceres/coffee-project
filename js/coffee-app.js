@@ -99,3 +99,36 @@ roastSelection.addEventListener('change', function() {
     var temp = document.getElementById("roast-selection").value;
     changeByRoast(temp);
 });
+
+
+function selectName(na) {
+    let tempArr = []
+    var temp = na;
+    na = na.charAt(0).toUpperCase();
+    temp = temp.substr(1);
+    na = na + temp
+    console.log(na)
+    coffees.forEach(function(e) {
+            if (e.name.includes(na)) {
+                tempArr.push(e);
+            }
+    });
+
+    return tempArr;
+}
+
+
+function changeByName(na) {
+    var temp = selectName(na);
+    coffeeListDiv.innerHTML = renderCoffees(temp)
+
+}
+
+var roastNameField = document.getElementById("roast-name");
+
+
+
+roastNameField.addEventListener("keyup", function() {
+    var temp = roastNameField.value;
+    changeByName(temp);
+});
