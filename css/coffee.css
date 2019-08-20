@@ -1,0 +1,100 @@
+/* Variables */
+
+:root {
+  --null: "";
+}
+
+/* Borders (for troubleshooting) */
+
+.wborder {
+  border: 1px solid #fff;
+  z-index: 999;
+}
+
+.bborder {
+  border: 1px solid #000;
+  z-index: 999;
+}
+
+/* Basic Page Elements */
+
+* {
+  box-sizing: border-box;
+}
+
+main, html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* Page Content */
+
+nav {
+  text-align: center;
+}
+
+nav > h1 {
+  margin-top: .3em;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Coffee List */
+
+.coffee-list {
+  width: 45%;
+}
+
+thead {
+  display: none;
+}
+
+/* Coffee Options */
+
+.coffee-options {
+  width: 45%;
+}
+
+#roast-selection {
+  width: 100%;
+  margin-bottom: .5em;
+}
+
+#coffee-name {
+  margin-top: .5em;
+}
+
+#roast-name {
+  width: 100%;
+}
+
+#roast-submit {
+  width: 100%;
+  margin-top: .5em;
+}
+
+#addACoffee {
+  text-align: center;
+}
+
+/* Coffee Options Add */
+
+#add-selection {
+  width: 100%;
+  margin-bottom: .5em;
+}
+
+#add-name {
+  width: 100%;
+}
+
+#add-submit {
+  width: 100%;
+  margin-top: .5em;
+}
