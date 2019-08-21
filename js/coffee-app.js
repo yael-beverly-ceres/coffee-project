@@ -1,7 +1,8 @@
-"use strict"
+"use strict";
 
 console.log("coffee app loaded");
 
+// Format single coffee item.
 function renderCoffee(coffee) {
     var html = '<div class="coffee-container">';
     html += '<p id="table-id">' + coffee.id + '</p>';
@@ -12,6 +13,7 @@ function renderCoffee(coffee) {
     return html;
 }
 
+// Format all the coffee items. (uses renderCoffee())
 function renderCoffees(coffees) {
     var html = '';
     for(var i = coffees.length - 1; i >= 0; i--) {
@@ -20,6 +22,7 @@ function renderCoffees(coffees) {
     return html;
 }
 
+// updates the coffee list. (uses renderCofees())
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     var selectedRoast = roastSelection.value;
@@ -32,7 +35,7 @@ function updateCoffees(e) {
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
-// from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
+// Array of coffees from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 var coffees = [
     {id: 1, name: 'Light City', roast: 'light'},
     {id: 2, name: 'Half City', roast: 'light'},
@@ -50,113 +53,86 @@ var coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
+
+
+// Declare Variables
 var coffeeListDiv = document.getElementById("coffeeListDiv");
 var submitButton = document.querySelector('#submit');
-var roastSelection = document.querySelector('#roast-selection');
+// var roastSelection = document.querySelector('#roast-selection');
+var roastSelection = document.getElementById("roast-selection");
+var roastNameField = document.getElementById("roast-name");
+var addDropdown = document.getElementById("add-selection");
+var addName = document.getElementById("add-name");
+var addSubmit = document.getElementById("add-submit");
 
+// Render coffees to html page.
 coffeeListDiv.innerHTML = renderCoffees(coffees); 
 
-// submitButton.addEventListener('click', updateCoffees);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Functions for searching roasts
+// ===== Searching Roasts =====
 //  returns selected roasts
 function selectRoast(ro) {
     let tempArr = []
-    
     coffees.forEach(function(e, i) {
         if (e.roast === ro) {
             tempArr.push(coffees[i]);
         }
     })
-
     return tempArr;
 }
 
-//   sort 
+//   sorts the roasts
 function changeByRoast(ro) {
     var temp = selectRoast(ro);
     coffeeListDiv.innerHTML = renderCoffees(temp)
 }
 
-var roastSelection = document.getElementById("roast-selection");
-
+//   Event listener for roasts drop down
 roastSelection.addEventListener('change', function() {
     var temp = document.getElementById("roast-selection").value;
     changeByRoast(temp);
 });
 
 
+// ===== Searching By Name =====
+// Searches for name by every letter entered
 function selectName(na) {
     let tempArr = []
     var temp = na;
     na = na.charAt(0).toUpperCase();
     temp = temp.substr(1);
     na = na + temp
-    console.log(na)
+    // console.log(na) // Prints each letter to console
     coffees.forEach(function(e) {
-            if (e.name.includes(na)) {
-                tempArr.push(e);
-            }
+        if (e.name.includes(na)) {
+            tempArr.push(e);
+        }
     });
-
     return tempArr;
 }
 
-
+// Takes input from search field and renders to page
 function changeByName(na) {
     var temp = selectName(na);
     coffeeListDiv.innerHTML = renderCoffees(temp)
-
 }
 
-var roastNameField = document.getElementById("roast-name");
-
-
-
+// Eventlistener on keyup to search for what's in the search field
 roastNameField.addEventListener("keyup", function() {
     var temp = roastNameField.value;
     changeByName(temp);
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// add
-
-var addDropdown = document.getElementById("add-selection");
-var addName = document.getElementById("add-name");
-var addSubmit = document.getElementById("add-submit");
-
+// ===== Add a coffee =====
+// Adds coffee to the list
 function addCoffee (dd, na) {
     coffees.push({id: (coffees.length + 1), name: addName.value, roast: addDropdown.value});
     coffeeListDiv.innerHTML = renderCoffees(coffees);
 }
 
+// Eventlistener for submit button that adds coffee to the list
 addSubmit.addEventListener("click", function(e){
     e.preventDefault();
 });
