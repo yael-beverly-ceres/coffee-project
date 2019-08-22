@@ -22,6 +22,12 @@
   box-sizing: border-box;
 }
 
+.btn-primary {
+  background-color: black !important;
+  border-color: saddlebrown !important;
+
+}
+
 main, html, body {
   width: 100%;
   height: 100%;
@@ -39,6 +45,9 @@ nav > h1 {
   margin-top: .3em;
 }
 
+h1, h2 {
+  font-family: 'Permanent Marker', cursive;
+}
 main {
   display: flex;
   flex-direction: row;
@@ -86,11 +95,12 @@ tr {
   padding: 0;
   display: inline-block;
   margin-right: .2em;
+  color: saddlebrown;
 }
 
 #table-coffee-roast {
   font-size: 1.2rem;
-  color: grey;
+  color: sandybrown;
   display: inline-block;
 }
 
