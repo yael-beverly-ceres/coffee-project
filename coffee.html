@@ -21,7 +21,7 @@
     <div class="container">
       <!-- Nav Section -->
       <nav>
-        <h1 >Coffee!</h1>
+        <h1>Coffee!</h1>
       </nav>
 
       <hr>
@@ -30,20 +30,7 @@
         <!-- Coffee list (left side) -->
         <div class="coffee-list ">
           <h1>Coffee list</h1>
-          <div id="coffees" class="bborder">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">NAME</th>
-                  <th scope="col">ROAST</th>
-                </tr>
-              </thead>
-              <tbody id="coffees">
-                <th scope="row"></th>
-              </tbody>
-            </table>
-          </div>
+          <div id="coffeeListDiv"></div>
         </div>
 
         <!-- Coffee options (right side) -->
@@ -82,7 +69,7 @@
               <h4>Name</h4>
             </label>
             <input type="text" name="roast-name" id="add-name">
-            <input id="add-submit" class="btn btn-primary" type="submit" />
+            <input id="add-submit" class="btn btn-primary" type="submit" onclick="addCoffee(addDropdown, addName);"/>
           </form>
 
         </div> <!-- .coffee-options -->

@@ -51,8 +51,47 @@ main {
   width: 45%;
 }
 
+#coffeeListDiv {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 483px;
+}
+
+.coffee-container {
+  height: 4em;
+}
+
 thead {
   display: none;
+}
+
+tr {
+  width: 100px;
+}
+
+.coffee-table {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: column wrap;
+}
+
+#table-id {
+  display: none;
+}
+
+#table-coffee-name {
+  font-size: 1.5rem;
+  padding: 0;
+  display: inline-block;
+  margin-right: .2em;
+}
+
+#table-coffee-roast {
+  font-size: 1.2rem;
+  color: grey;
+  display: inline-block;
 }
 
 /* Coffee Options */
